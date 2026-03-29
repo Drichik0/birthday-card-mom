@@ -2,58 +2,130 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Mom Mayla 🎂</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Happy Birthday Mom Mayla</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
 </head>
-<body class="page1-body">
+<body>
 
-  <!-- Music Player -->
-  <div class="music-player" id="musicPlayer">
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">
-      <span id="musicIcon">🎵</span>
+  <!-- Audio lives here permanently — never destroyed, so music never stops -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music/birthday.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Music button — always on screen -->
+  <div class="music-player">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+      <span id="musicIcon">&#9835;</span>
       <span id="musicLabel">Music</span>
     </button>
   </div>
 
-  <!-- Background stars -->
-  <div class="stars" id="stars"></div>
+  <!-- Back button — hidden on page 1 -->
+  <button class="back-btn" id="backBtn" onclick="goBack()">&#8592; Back</button>
 
-  <!-- Fireworks Canvas -->
-  <canvas id="fireworksCanvas"></canvas>
+  <!-- PAGE 1: Space / Fireworks -->
+  <section id="page1" class="page active">
+    <div class="stars" id="stars"></div>
+    <canvas id="fireworksCanvas"></canvas>
 
-  <!-- Page 1 Content -->
-  <main class="page1-main">
-    <div class="birthday-header">
-      <div class="crown-emoji">👑</div>
-      <h1 class="birthday-title">
-        <span class="happy">Happy</span>
-        <span class="birthday">Birthday</span>
-        <span class="name-line">Mom Mayla</span>
-      </h1>
-      <div class="sparkle-row">✨ 🌟 ✨ 🌟 ✨</div>
+    <main class="page1-main">
+      <div class="birthday-header">
+        <div class="crown-emoji">👑</div>
+        <h1 class="birthday-title">
+          <span class="happy">Happy</span>
+          <span class="birthday">Birthday</span>
+          <span class="name-line">Mom Mayla</span>
+        </h1>
+        <div class="sparkle-row">✨ 🌟 ✨ 🌟 ✨</div>
+      </div>
+
+      <button class="envelope-btn" onclick="goToPage(2)">
+        <div class="envelope-outer">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <div class="envelope-heart">💜</div>
+          </div>
+          <div class="envelope-bottom"></div>
+        </div>
+        <span class="envelope-text">View my birthday message for you</span>
+      </button>
+    </main>
+  </section>
+
+  <!-- PAGE 2: Sky / Message -->
+  <section id="page2" class="page">
+    <div class="sky-bg">
+      <div class="sun"></div>
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+      <div class="cloud cloud-4"></div>
+      <div class="cloud cloud-5"></div>
+      <div class="cloud cloud-6"></div>
+      <div class="cloud cloud-small cloud-7"></div>
+      <div class="cloud cloud-small cloud-8"></div>
     </div>
 
-    <a href="page2.html" class="envelope-btn" id="envelopeBtn">
-      <div class="envelope-outer">
-        <div class="envelope-flap"></div>
-        <div class="envelope-body">
-          <div class="envelope-heart">💜</div>
-        </div>
-        <div class="envelope-bottom"></div>
+    <main class="page2-main">
+      <div class="message-card">
+        <div class="message-deco">💜 🌸 💜</div>
+        <p class="message-text">
+          Thank you, Mi, for always taking care of us.<br/>
+          We appreciate everything you do for our family.<br/>
+          <strong>We love you!!! 💖</strong><br/>
+          May God continue to bless you with strength and health.
+        </p>
+
+        <div class="verse-divider">✦ ✦ ✦</div>
+
+        <blockquote class="bible-verse">
+          <p>"Fear not, for I am with you; be not dismayed, for I am your God;
+          I will strengthen you, I will help you,
+          I will uphold you with my righteous right hand."</p>
+          <cite>&#8212; Isaiah 41:10</cite>
+        </blockquote>
       </div>
-      <span class="envelope-text">View my birthday message for you</span>
-    </a>
-  </main>
 
-  <!-- Audio element -->
-  <audio id="bgMusic" loop>
-    <source src="music/birthday.mp3" type="audio/mpeg" />
-  </audio>
+      <div class="question-section">
+        <p class="question-text">Do you feel blessed and happy today? 🌈</p>
+        <div class="answer-btns">
+          <button class="yes-btn" onclick="goToPage(3)">Yes! 🙌</button>
+          <button class="no-btn" id="noBtn"
+            onmousemove="runAwayBtn(event)"
+            ontouchstart="runAwayBtnTouch(event)">No 😢</button>
+        </div>
+      </div>
+    </main>
+  </section>
 
-  <script src="music.js"></script>
-  <script src="fireworks.js"></script>
+  <!-- PAGE 3: Gallery -->
+  <section id="page3" class="page">
+    <div class="petals-bg" id="petalsBg"></div>
+
+    <main class="page3-main">
+      <h2 class="gallery-title">Our Memories Together 📷</h2>
+      <p class="gallery-subtitle">A few of our favorite moments with you, Mom 💜</p>
+
+      <div id="galleryIntro">
+        <button class="view-gallery-btn" onclick="openGallery()">🖼️ View Gallery</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </main>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-back" onclick="closeLightbox()">&#8592; Back</button>
+    <div class="lightbox-inner" onclick="closeLightbox()">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" onclick="event.stopPropagation()"/>
+    </div>
+  </div>
+
   <script src="stars.js"></script>
+  <script src="fireworks.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

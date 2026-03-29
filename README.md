@@ -1,86 +1,76 @@
-# 🎂 Happy Birthday Mom Mayla — Birthday Card Site
+# Happy Birthday Mom Mayla
 
-A beautiful multi-page birthday card website, deployable via GitHub Pages.
+A multi-page birthday card website built as a **Single Page Application** for
+GitHub Pages. Music plays continuously — it never pauses between pages.
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 birthday-card/
-├── index.html        ← Page 1: Space/Fireworks landing page
-├── page2.html        ← Page 2: Birthday message + sky/clouds
-├── page3.html        ← Page 3: Photo gallery
-├── style.css         ← Shared styles for all pages
-├── music.js          ← Shared music player logic
-├── fireworks.js      ← Fireworks animation (Page 1)
-├── stars.js          ← Twinkling stars (Page 1)
+├── index.html      ← Entire site (all 3 "pages" live here as sections)
+├── style.css       ← All styles, fully responsive
+├── app.js          ← Navigation, music, gallery, no-button logic
+├── fireworks.js    ← Canvas fireworks (Page 1)
+├── stars.js        ← Twinkling stars (Page 1)
 │
 ├── music/
-│   └── birthday.mp3  ← ⚠️ YOU MUST ADD THIS FILE
+│   └── birthday.mp3     ← ADD YOUR MUSIC FILE HERE
 │
-├── images/
-│   ├── photo1.jpg    ← ⚠️ YOU MUST ADD THESE FILES
-│   ├── photo2.jpg
-│   ├── photo3.jpg
-│   ├── photo4.jpg
-│   ├── photo5.jpg
-│   ├── photo6.jpg
-│   ├── photo7.jpg
-│   ├── photo8.jpg
-│   ├── photo9.jpg
-│   └── photo10.jpg
-│
-└── README.md
+└── images/
+    ├── photo1.jpg        ← ADD YOUR 10 PHOTOS HERE
+    ├── photo2.jpg
+    ├── photo3.jpg
+    ├── photo4.jpg
+    ├── photo5.jpg
+    ├── photo6.jpg
+    ├── photo7.jpg
+    ├── photo8.jpg
+    ├── photo9.jpg
+    └── photo10.jpg
 ```
 
 ---
 
-## 🎵 Adding Background Music
+## Step-by-Step Setup
 
-1. Get any birthday/celebration MP3 you like (e.g. from YouTube converter or royalty-free sites like pixabay.com/music).
-2. Rename it to `birthday.mp3`.
-3. Place it inside the `music/` folder.
+### 1. Add Background Music
+- Get a free MP3 from https://pixabay.com/music (search "happy birthday" or "celebration")
+- Rename the file to `birthday.mp3`
+- Place it inside the `music/` folder
 
-> Note: Browsers may block autoplay. The site handles this gracefully — music will start on the user's first click if autoplay is blocked.
+### 2. Add Photos
+- Collect 10 photos of/with Mom
+- Rename them `photo1.jpg` through `photo10.jpg`
+- Place them all in the `images/` folder
+- Recommended size: 800×600px or similar (resize before uploading for speed)
 
----
-
-## 📸 Adding Photos (Page 3 Gallery)
-
-1. Collect 10 photos of/with Mom.
-2. Name them exactly: `photo1.jpg`, `photo2.jpg`, ... `photo10.jpg`
-3. Place them all inside the `images/` folder.
-4. Photos can be JPG, PNG, or WebP — just update the file extensions in `page3.html` if needed.
-
-> Tip: Resize photos to ~800x600px before uploading to keep the site fast.
-
----
-
-## 🚀 Deploying to GitHub Pages
-
-1. Create a new repository on GitHub (e.g. `birthday-mom`).
-2. Upload all files maintaining the folder structure above.
-3. Go to **Settings → Pages**.
-4. Under **Source**, select `main` branch, root folder `/`.
-5. Click **Save**.
-6. Your site will be live at: `https://yourusername.github.io/birthday-mom/`
+### 3. Customize Captions (Optional)
+- Open `app.js`
+- Find the `captions` array near the top
+- Edit the text strings — keep them without emoji (emojis removed by design)
 
 ---
 
-## ✨ Features
+## Deploy to GitHub Pages
 
-| Page | Features |
-|------|----------|
-| Page 1 | Space/purple background, animated fireworks, twinkling stars, shooting stars, animated envelope button |
-| Page 2 | Animated sky with floating clouds, birthday message, Bible verse, runaway "No" button |
-| Page 3 | Falling petals background, gallery button, 5×2 photo grid with pop-in animation, lightbox full view |
-| All Pages | Persistent background music with pause button, smooth page transitions |
+1. Create a new GitHub repository (e.g. `birthday-mom-mayla`)
+2. Upload all files keeping the exact folder structure above
+3. Go to **Settings → Pages**
+4. Set Source to: `main` branch, folder `/` (root)
+5. Click **Save**
+6. Your site goes live at: `https://yourusername.github.io/birthday-mom-mayla/`
 
 ---
 
-## 🔧 Customization Tips
+## Features
 
-- **Change captions** in gallery: Edit the `captions` array in `page3.html`
-- **Change message text**: Edit the `<p class="message-text">` in `page2.html`
-- **More/fewer photos**: Adjust the `images` array in `page3.html` and update the grid columns in `style.css`
+| Feature | Details |
+|---------|---------|
+| Continuous music | Audio element is never reloaded — music plays through all pages |
+| Responsive | Works on any screen size — phone, tablet, desktop |
+| Page 1 | Purple space background, canvas fireworks, twinkling stars, shooting stars, animated envelope |
+| Page 2 | Animated sky with CSS-only clouds, message card, Bible verse, runaway No button (stays in viewport) |
+| Page 3 | Floating petals, gallery with pop-in animation, full lightbox with back button |
+| No button | Runs away from cursor on hover/touch, always stays within screen bounds |
