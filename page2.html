@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Message For You 💜</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+</head>
+<body class="page2-body">
+
+  <!-- Music Player -->
+  <div class="music-player" id="musicPlayer">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">
+      <span id="musicIcon">🎵</span>
+      <span id="musicLabel">Music</span>
+    </button>
+  </div>
+
+  <!-- Back Button -->
+  <a href="index.html" class="back-btn">← Back</a>
+
+  <!-- Sky Background with Clouds -->
+  <div class="sky-bg">
+    <div class="sun"></div>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+    <div class="cloud cloud-5"></div>
+    <div class="cloud cloud-6"></div>
+    <div class="cloud cloud-small cloud-7"></div>
+    <div class="cloud cloud-small cloud-8"></div>
+  </div>
+
+  <!-- Page 2 Content -->
+  <main class="page2-main">
+    <div class="message-card">
+      <div class="message-deco">💜 🌸 💜</div>
+      <p class="message-text">
+        Thank you, Mi, for always taking care of us.<br/>
+        We appreciate everything you do for our family.<br/>
+        <strong>We love you!!!</strong><br/>
+        May God continue to bless you with strength and health.
+      </p>
+
+      <div class="verse-divider">✦ ✦ ✦</div>
+
+      <blockquote class="bible-verse">
+        <p>"Fear not, for I am with you; be not dismayed, for I am your God;<br/>
+        I will strengthen you, I will help you,<br/>
+        I will uphold you with my righteous right hand."</p>
+        <cite>– Isaiah 41:10</cite>
+      </blockquote>
+    </div>
+
+    <!-- Question Section -->
+    <div class="question-section">
+      <p class="question-text">Do you feel blessed and happy today? 🌈</p>
+      <div class="answer-btns">
+        <a href="page3.html" class="yes-btn">Yes! 🙌</a>
+        <button class="no-btn" id="noBtn" onmousemove="runAwayBtn(event)" ontouchstart="runAwayBtn(event)">No 😢</button>
+      </div>
+    </div>
+  </main>
+
+  <audio id="bgMusic" loop>
+    <source src="music/birthday.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="music.js"></script>
+  <script>
+    // Runaway "No" button
+    function runAwayBtn(e) {
+      const btn = document.getElementById('noBtn');
+      const rect = btn.getBoundingClientRect();
+      const bW = rect.width, bH = rect.height;
+      const vW = window.innerWidth, vH = window.innerHeight;
+
+      // Pick a random position far from current
+      let newX, newY;
+      do {
+        newX = Math.random() * (vW - bW);
+        newY = Math.random() * (vH - bH);
+      } while (
+        Math.abs(newX - rect.left) < 150 &&
+        Math.abs(newY - rect.top) < 150
+      );
+
+      btn.style.position = 'fixed';
+      btn.style.left = newX + 'px';
+      btn.style.top = newY + 'px';
+      btn.style.transform = 'none';
+    }
+  </script>
+</body>
+</html>

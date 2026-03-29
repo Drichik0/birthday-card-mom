@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Mom Mayla 🎂</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+</head>
+<body class="page1-body">
+
+  <!-- Music Player -->
+  <div class="music-player" id="musicPlayer">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">
+      <span id="musicIcon">🎵</span>
+      <span id="musicLabel">Music</span>
+    </button>
+  </div>
+
+  <!-- Background stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Fireworks Canvas -->
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- Page 1 Content -->
+  <main class="page1-main">
+    <div class="birthday-header">
+      <div class="crown-emoji">👑</div>
+      <h1 class="birthday-title">
+        <span class="happy">Happy</span>
+        <span class="birthday">Birthday</span>
+        <span class="name-line">Mom Mayla</span>
+      </h1>
+      <div class="sparkle-row">✨ 🌟 ✨ 🌟 ✨</div>
+    </div>
+
+    <a href="page2.html" class="envelope-btn" id="envelopeBtn">
+      <div class="envelope-outer">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body">
+          <div class="envelope-heart">💜</div>
+        </div>
+        <div class="envelope-bottom"></div>
+      </div>
+      <span class="envelope-text">View my birthday message for you</span>
+    </a>
+  </main>
+
+  <!-- Audio element -->
+  <audio id="bgMusic" loop>
+    <source src="music/birthday.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="music.js"></script>
+  <script src="fireworks.js"></script>
+  <script src="stars.js"></script>
+</body>
+</html>
